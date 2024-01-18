@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://wpnc0grcfwoh"]
+
+[ext_resource type="Script" path="res://lib/level.gd" id="1_owkf8"]
+[ext_resource type="PackedScene" uid="uid://dy2k0u1u154dt" path="res://models/architecture/dungeon/door.tscn" id="3_kh5m0"]
+[ext_resource type="Script" path="res://lib/spawn_point.gd" id="4_jjyuu"]
+[ext_resource type="PackedScene" uid="uid://yeelj3pu64e6" path="res://models/props/statue_1.tscn" id="5_kup8v"]
+[ext_resource type="PackedScene" uid="uid://d0ftg82mvfh7y" path="res://models/props/torch_1.tscn" id="6_2dmqg"]
+[ext_resource type="PackedScene" uid="uid://dv5ebt8250of7" path="res://models/architecture/dungeon/room_cap_2.tscn" id="6_jurm3"]
+
+[sub_resource type="Environment" id="Environment_sohly"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
+
+[node name="Level2" type="Node3D"]
+script = ExtResource("1_owkf8")
+key = "level_2"
+
+[node name="SpawnPointLevel1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+script = ExtResource("4_jjyuu")
+key = "level_1"
+
+[node name="SpawnPointDefault" type="Node3D" parent="."]
+script = ExtResource("4_jjyuu")
+
+[node name="Door" parent="." instance=ExtResource("3_kh5m0")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 7.5)
+destination = "level_1"
+
+[node name="Statue1" parent="." instance=ExtResource("5_kup8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sohly")
+
+[node name="Torch1" parent="." instance=ExtResource("6_2dmqg")]
+transform = Transform3D(-0.999976, 0, -0.00687653, 0, 1, 0, 0.00687653, 0, -0.999976, -3.51954, 1.98418, -5.77839)
+
+[node name="Torch3" parent="." instance=ExtResource("6_2dmqg")]
+transform = Transform3D(-0.999976, 0, -0.00687653, 0, 1, 0, 0.00687653, 0, -0.999976, 0.0106473, 1.98418, -5.77839)
+
+[node name="Torch2" parent="." instance=ExtResource("6_2dmqg")]
+transform = Transform3D(-0.999976, 0, -0.00687653, 0, 1, 0, 0.00687653, 0, -0.999976, 3.26813, 1.98418, -5.77839)
+
+[node name="Torch4" parent="." instance=ExtResource("6_2dmqg")]
+transform = Transform3D(-0.00687648, 0, 0.999976, 0, 1, 0, -0.999976, 0, -0.00687648, 5.81685, 1.98418, 1.22161)
+
+[node name="Torch5" parent="." instance=ExtResource("6_2dmqg")]
+transform = Transform3D(0.00321141, 0, -0.999995, 0, 1, 0, 0.999995, 0, 0.00321141, -5.78861, 1.98418, 1.22161)
+
+[node name="RoomCap" parent="." instance=ExtResource("6_jurm3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)

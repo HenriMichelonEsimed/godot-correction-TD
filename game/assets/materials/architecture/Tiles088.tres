@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://c2ogpeosnm8tl"]
+
+[ext_resource type="Texture2D" uid="uid://cjqssk4732atp" path="res://assets/textures/architecture/Tiles088/Tiles088_1K-JPG_Color.jpg" id="1_ogeeh"]
+[ext_resource type="Texture2D" uid="uid://c4hr81gkc12t5" path="res://assets/textures/architecture/Tiles088/Tiles088_1K-JPG_AmbientOcclusion.jpg" id="2_78jvr"]
+[ext_resource type="Texture2D" uid="uid://wa5pij8gvigt" path="res://assets/textures/architecture/Tiles088/Tiles088_1K-JPG_Displacement.jpg" id="3_m5v1h"]
+[ext_resource type="Texture2D" uid="uid://b1inlu3wss37k" path="res://assets/textures/architecture/Tiles088/Tiles088_1K-JPG_NormalGL.jpg" id="4_s4mjm"]
+[ext_resource type="Texture2D" uid="uid://b0y6xglimo1o8" path="res://assets/textures/architecture/Tiles088/Tiles088_1K-JPG_Roughness.jpg" id="5_woddg"]
+
+[resource]
+albedo_texture = ExtResource("1_ogeeh")
+roughness_texture = ExtResource("5_woddg")
+normal_enabled = true
+normal_texture = ExtResource("4_s4mjm")
+ao_enabled = true
+ao_texture = ExtResource("2_78jvr")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_m5v1h")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true

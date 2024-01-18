@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv5ebt8250of7"]
+
+[ext_resource type="PackedScene" uid="uid://msy3e2dbwp46" path="res://models/architecture/dungeon/room_cap.tscn" id="1_bbnvn"]
+[ext_resource type="Material" uid="uid://b7hhsrd3skso0" path="res://assets/materials/architecture/Tiles083.tres" id="3_bhdeb"]
+[ext_resource type="Material" uid="uid://dtmb34ykxsnsm" path="res://assets/materials/architecture/Bricks075B.res" id="3_cb5kt"]
+
+[node name="RoomCap" instance=ExtResource("1_bbnvn")]
+
+[node name="Room_Cap_stonefloor_0" parent="." index="0"]
+surface_material_override/0 = ExtResource("3_bhdeb")
+
+[node name="Room_Cap_brickwall1_0" parent="." index="2"]
+surface_material_override/0 = ExtResource("3_cb5kt")
+
+[node name="Room_Cap_stonetrims_0" parent="." index="4"]
+surface_material_override/0 = ExtResource("3_cb5kt")

@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://cydkhrt5yw0jp"]
+
+[ext_resource type="Texture2D" uid="uid://do46a7h0xnjyr" path="res://models/architecture/dungeon/sources/wall_1_brickwall1_albedo.png" id="1_a14px"]
+[ext_resource type="Texture2D" uid="uid://elrxuu7el7kh" path="res://models/architecture/dungeon/sources/wall_1_brickwall1_orm.png" id="2_icanw"]
+[ext_resource type="Texture2D" uid="uid://bx2edpptm1lj1" path="res://models/architecture/dungeon/sources/wall_1_brickwall1_normal.png" id="3_pc8y3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0ok1"]
+resource_name = "brickwall1"
+albedo_color = Color(1, 1, 1, 1)
+albedo_texture = ExtResource("1_a14px")
+metallic_texture = ExtResource("2_icanw")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_icanw")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_pc8y3")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vvhim"]
+_surfaces = [{
+"aabb": AABB(0, -2, 0, 1e-05, 4, 4),
+"format": 34896670721,
+"index_count": 6,
+"index_data": PackedByteArray(1, 0, 0, 0, 2, 0, 2, 0, 0, 0, 3, 0),
+"name": "brickwall1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_51gt3"]
+resource_name = "wall_1_Mesh_0"
+_surfaces = [{
+"aabb": AABB(0, -2, 0, 1e-05, 4, 4),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0),
+"format": 34896670839,
+"index_count": 6,
+"index_data": PackedByteArray(1, 0, 0, 0, 2, 0, 2, 0, 0, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_o0ok1"),
+"name": "brickwall1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 170, 42, 0, 0, 255, 255, 0, 0, 170, 42, 0, 0, 255, 255, 255, 255, 170, 42, 0, 0, 0, 0, 255, 255, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vvhim")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_x8li6"]
+data = PackedVector3Array(0, 2, 0, 0, -2, 0, 0, 2, 4, 0, 2, 4, 0, -2, 0, 0, -2, 4)
+
+[node name="Wall1" type="StaticBody3D"]
+
+[node name="hall_Single_brickwall1_0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -3.57628e-07, 1, 0, -1, -3.57628e-07, 0, 0, 0)
+mesh = SubResource("ArrayMesh_51gt3")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -3.57628e-07, 1, 0, -1, -3.57628e-07, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_x8li6")

@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dopwga3gw6bpv"]
+
+[ext_resource type="PackedScene" uid="uid://ctoenkxklrdyj" path="res://models/characters/paladin/paladin.tscn" id="1_dd6t6"]
+[ext_resource type="Script" path="res://lib/player.gd" id="1_suhe2"]
+[ext_resource type="AnimationLibrary" uid="uid://b3myt5j3na8ea" path="res://assets/animations/player.res" id="2_qe6qf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rf7y1"]
+size = Vector3(0.719788, 1.7804, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rph7p"]
+size = Vector3(1, 1.71161, 0.996826)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_suhe2")
+
+[node name="Character" parent="." instance=ExtResource("1_dd6t6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01442, 0)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00784303, 0.888154, 0.184976)
+shape = SubResource("BoxShape3D_rf7y1")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77574, 1.46084)
+fov = 60.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Character")
+libraries = {
+"player": ExtResource("2_qe6qf")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.885956, -0.530396)
+shape = SubResource("BoxShape3D_rph7p")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -36,10 +36,12 @@ func _pause():
 	get_tree().paused = not get_tree().paused
 
 func _enter_level(from:String, to:String, use_spawn_point:bool = true):
-	if (GameState.current_level != null): GameState.current_level.queue_free()
+	if (GameState.current_level != null): 
+		GameState.current_level.call_deferred("queue_free")
 	GameState.current_level = load("res://levels/" + to + ".tscn").instantiate()
 	GameState.current_level_key = to
 	add_child(GameState.current_level)
+	GameState.current_level.process_mode  = PROCESS_MODE_PAUSABLE
 	if (use_spawn_point):
 		for spawnpoint:SpawnPoint in GameState.current_level.find_children("", "SpawnPoint"):
 			if (spawnpoint.key == from):
